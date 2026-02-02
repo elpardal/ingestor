@@ -1,0 +1,14 @@
+# pyproject.toml
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "telegram-media-ingestor"
+version = "0.1.0"
+description = "Ingestor de mídias do Telegram com deduplicação e IOC extraction"
+requires-python = ">=3.10"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+namespaces = false

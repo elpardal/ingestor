@@ -1,4 +1,3 @@
-# src/domain/models.py
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from enum import Enum
@@ -28,8 +27,11 @@ class TelegramFile:
 
 @dataclass
 class ProcessingJob:
-    job_id: str = field(default_factory=lambda: str(uuid.uuid4()))
+    # Campos OBRIGATÓRIOS primeiro (sem default)
     file: TelegramFile = field(repr=False)
+    
+    # Campos com default depois
+    job_id: str = field(default_factory=lambda: str(uuid.uuid4()))
     status: JobStatus = JobStatus.QUEUED
     created_at: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
     updated_at: Optional[datetime] = None
