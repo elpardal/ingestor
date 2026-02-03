@@ -1,9 +1,17 @@
 aiofiles==25.1.0
+aiohappyeyeballs==2.6.1
+aiohttp==3.13.3
+aiosignal==1.4.0
 annotated-types==0.7.0
 asyncpg==0.31.0
+attrs==25.4.0
+frozenlist==1.8.0
+idna==3.11
 iniconfig==2.3.0
+multidict==6.7.1
 packaging==26.0
 pluggy==1.6.0
+propcache==0.4.1
 pyaes==1.6.1
 pyasn1==0.6.2
 pydantic==2.12.5
@@ -15,6 +23,8 @@ python-dotenv==1.2.1
 python-magic==0.4.27
 rarfile==4.2
 rsa==4.9.1
+-e git+https://github.com/elpardal/ingestor.git@88540e85e6a328ec35666621a6fc8c6f83aa0c99#egg=telegram_media_ingestor
 Telethon==1.42.0
 typing-inspection==0.4.2
 typing_extensions==4.15.0
+yarl==1.22.0

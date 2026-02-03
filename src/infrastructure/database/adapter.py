@@ -85,10 +85,12 @@ class DatabaseAdapter:
             )
     
     async def log_job(self, job: ProcessingJob) -> None:
+        """Registra job SEM depender de processed_files existir."""
         async with self.transaction() as conn:
             await conn.execute("""
-                INSERT INTO processing_jobs (job_id, telegram_file_id, status, created_at, updated_at)
-                VALUES ($1, $2, $3, $4, $5)
+                INSERT INTO processing_jobs (
+                    job_id, telegram_file_id, status, created_at, updated_at
+                ) VALUES ($1, $2, $3, $4, $5)
                 ON CONFLICT (job_id) DO NOTHING
             """,
                 job.job_id,
@@ -102,16 +104,19 @@ class DatabaseAdapter:
         self,
         job_id: str,
         status: str,
-        error: Optional[str] = None
+        error: Optional[str] = None,
+        file_hash: Optional[str] = None
     ) -> None:
+        """Atualiza status do job, opcionalmente registrando hash mesmo em falhas."""
         async with self.transaction() as conn:
             await conn.execute("""
                 UPDATE processing_jobs
-                SET status = $1, error = $2, updated_at = NOW()
-                WHERE job_id = $3
+                SET status = $1, error = $2, updated_at = NOW(), file_hash = COALESCE($3, file_hash)
+                WHERE job_id = $4
             """,
                 status,
                 error,
+                file_hash,
                 job_id
             )
     
