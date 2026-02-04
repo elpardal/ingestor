@@ -12,3 +12,8 @@ requires-python = ">=3.10"
 [tool.setuptools.packages.find]
 where = ["src"]
 namespaces = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "strict"
+python_files = ["test_*.py"]
