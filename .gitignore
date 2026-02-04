@@ -1,10 +1,36 @@
+# Ambiente Python
 venv/
-.env
-__pycache__/
+.venv/
 *.pyc
+__pycache__/
 *.pyo
 *.pyd
-*.sqlite3
-.vscode/
+.Python
+env/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.gitignore
+.git/
+.pythest_cache/
+# Dados sensíveis e runtime
+.env
 data/
-fixtures/
+!.gitkeep
+
+# Sessão Telegram (NUNCA versionar)
+*.session
+*.session-journal
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
